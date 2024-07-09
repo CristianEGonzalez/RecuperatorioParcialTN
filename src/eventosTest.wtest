@@ -1,0 +1,32 @@
+import emociones.*
+import individuos.*
+import eventos.*
+
+describe "eventos"{
+	
+const evento1 = new Evento(nombre="11 de Septiembre", colorEmocional="rojo", impacto=10)
+const evento2 = new Evento(nombre="Alunizaje", colorEmocional="esmeralda", impacto=10)
+
+const furia1 = new Furia(intensidad=75, color="rojo", palabrotas=["demonios","changos"])
+const alegria2 = new Alegria(intensidad=80, color="esmeralda", acontecimientosPositivos=24)
+const tristeza2 = new Tristeza(intensidad=60, color="marino", melancolia=true, llorona=false)
+
+const raily = new Individuo(edad=11,emociones=[furia1,alegria2,tristeza2])
+
+	test "raily tiene los 2 eventos registrados"{
+		evento1.transferirA(raily)
+		evento2.transferirA(raily)
+		assert.equals([evento1,evento2], raily.eventos())
+	}
+
+	test "procesar eventos de raily"{
+		evento1.transferirA(raily)
+		evento2.transferirA(raily)
+		raily.procesarEventos()
+		assert.that(raily.eventos().isEmpty())
+		assert.equals(90, furia1.intensidad())
+		assert.equals(90, alegria2.intensidad())
+		assert.equals(60, tristeza2.intensidad())
+	}
+
+}

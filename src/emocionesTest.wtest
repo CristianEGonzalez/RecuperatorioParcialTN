@@ -1,0 +1,67 @@
+import emociones.*
+
+describe "emociones"{
+
+const furia1 = new Furia(intensidad=75, color="rojo", palabrotas=["demonios","changos"])
+const furia2 = new Furia(intensidad=78, color="naranja", palabrotas=["changos","wtf"])
+const alegria1 = new Alegria(intensidad=70, color="verde", acontecimientosPositivos=25)
+const alegria2 = new Alegria(intensidad=80, color="esmeralda", acontecimientosPositivos=24)
+const tristeza1 = new Tristeza(intensidad=60, color="azul", melancolia=true, llorona=true)
+const tristeza2 = new Tristeza(intensidad=60, color="marino", melancolia=true, llorona=false)
+
+	test "furia1 puedeLiberarse" {
+		assert.that(furia1.puedeLiberarse())
+	}
+ 
+	test "furia2 puedeLiberarse" {
+		assert.that(furia2.puedeLiberarse())
+	}
+	
+	test "alegria1 no puedeLiberarse" {
+		assert.notThat(alegria1.puedeLiberarse())
+	}
+	
+	test "alegria2 puedeLiberarse" {
+		assert.that(alegria2.puedeLiberarse())
+	}
+	
+	test "tristeza1 puedeLiberarse" {
+		assert.that(tristeza1.puedeLiberarse())
+	}
+	
+	test "tristeza2 puedeLiberarse" {
+		assert.that(tristeza2.puedeLiberarse())
+	}
+	
+	test "furia1 expresa emocion"{
+		furia1.expresarEmocion()
+		assert.equals(67, furia1.intensidad())
+	}
+	
+	test "furia2 expresa emocion"{
+		furia2.expresarEmocion()
+		assert.equals(71, furia2.intensidad())
+	}
+	
+	test "alegria1 expresa emocion"{
+		alegria1.expresarEmocion()
+		assert.equals(70, alegria1.intensidad())
+	}
+	
+	test "alegria2 expresa emocion"{
+		alegria2.expresarEmocion()
+		assert.equals(60.8, alegria2.intensidad())
+	}
+	
+	test "tristeza1 expresa emocion"{
+		tristeza1.expresarEmocion()
+		assert.equals(50, tristeza1.intensidad())
+	}
+	
+	test "tristeza2 expresa emocion"{
+		tristeza2.expresarEmocion()
+		assert.equals(55, tristeza2.intensidad())
+	}
+	
+	
+}
